@@ -1,0 +1,48 @@
+PSF
+
+       1 !NTITLE
+ REMARKS VMD-generated NAMD/X-Plor PSF structure file
+
+      13 !NATOM
+       1 00   0    DMPC NC   NC     0.111803       87.1634           0
+       2 00   0    DMPC PH   PH    -0.111803       94.9714           0
+       3 00   0    DMPC GL   GL     0.000000       41.0718           0
+       4 00   0    DMPC EST1 EST1   0.000000       58.0361           0
+       5 00   0    DMPC C11  CM     0.000000       42.0797           0
+       6 00   0    DMPC C12  CM     0.000000       42.0797           0
+       7 00   0    DMPC C13  CM     0.000000       42.0797           0
+       8 00   0    DMPC C14  CT     0.000000       43.0877           0
+       9 00   0    DMPC EST2 EST2   0.000000       58.0361           0
+      10 00   0    DMPC C21  CM     0.000000       42.0797           0
+      11 00   0    DMPC C22  CM     0.000000       42.0797           0
+      12 00   0    DMPC C23  CM     0.000000       42.0797           0
+      13 00   0    DMPC C24  CT     0.000000       43.0877           0
+
+      12 !NBOND: bonds
+       1       2       2       3       3       4       3       9
+       4       5       5       6       6       7       7       8
+       9      10      10      11      11      12      12      13
+
+       0 !NTHETA: angles
+
+
+       0 !NPHI: dihedrals
+
+
+       0 !NIMPHI: impropers
+
+
+       0 !NDON: donors
+
+
+       0 !NACC: acceptors
+
+
+       0 !NNB
+
+       0       0       0       0       0       0       0       0
+       0       0       0       0       0
+
+       1       0 !NGRP
+       0       0       0
+

@@ -1,0 +1,10 @@
+ATOM      1  OH2 TIP3W   1      -0.017   2.135   0.728  1.00  0.00      WAT  O
+ATOM      2  H1  TIP3W   1      -0.015   2.607  -0.106  1.00  0.00      WAT  H
+ATOM      3  H2  TIP3W   1      -0.014   2.821   1.398  1.00  0.00      WAT  H
+ATOM      4  OH2 TIP3W   2      -0.042  -0.721   1.360  1.00  0.00      WAT  O
+ATOM      5  H1  TIP3W   2      -0.042  -1.143   0.498  1.00  0.00      WAT  H
+ATOM      6  H2  TIP3W   2      -0.013   0.219   1.173  1.00  0.00      WAT  H
+ATOM      7  OH2 TIP3W   3       0.036  -1.899  -1.300  1.00  0.00      WAT  O
+ATOM      8  H1  TIP3W   3       0.022  -2.755  -1.731  1.00  0.00      WAT  H
+ATOM      9  H2  TIP3W   3       0.081  -1.263  -2.017  1.00  0.00      WAT  H
+END

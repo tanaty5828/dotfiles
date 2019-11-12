@@ -1,0 +1,4 @@
+_yum_upgrade_pkgs=( ${(Q)"${(z)$(<<\EO:_yum_upgrade_pkgs
+
+EO:_yum_upgrade_pkgs
+)}"} )

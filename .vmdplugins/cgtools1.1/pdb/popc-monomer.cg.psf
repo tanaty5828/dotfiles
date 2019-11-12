@@ -1,0 +1,57 @@
+PSF
+
+       1 !NTITLE
+ REMARKS VMD generated structure x-plor psf file
+
+      16 !NATOM
+       1 LIP  0    POPC NC   NC     0.111803       87.1647           0
+       2 LIP  0    POPC PH   PH    -0.111803       94.9716           0
+       3 LIP  0    POPC GL   GL     0.000000       41.0725           0
+       4 LIP  0    POPC EST1 EST1   0.000000       58.0358           0
+       5 LIP  0    POPC C11  CM     0.000000       42.0804           0
+       6 LIP  0    POPC C12  CM     0.000000       42.0804           0
+       7 LIP  0    POPC C13  CMD2   0.000000       26.0378           0
+       8 LIP  0    POPC C14  CM     0.000000       42.0804           0
+       9 LIP  0    POPC C15  CM     0.000000       42.0804           0
+      10 LIP  0    POPC C16  CT2    0.000000       29.0615           0
+      11 LIP  0    POPC EST2 EST2   0.000000       58.0358           0
+      12 LIP  0    POPC C21  CM     0.000000       42.0804           0
+      13 LIP  0    POPC C22  CM     0.000000       42.0804           0
+      14 LIP  0    POPC C23  CM     0.000000       42.0804           0
+      15 LIP  0    POPC C24  CM     0.000000       42.0804           0
+      16 LIP  0    POPC C25  CT2    0.000000       29.0615           0
+
+      15 !NBOND: bonds
+       1       2       2       3       3       4       3      11
+       4       5       5       6       6       7       7       8
+       8       9       9      10      11      12      12      13
+      13      14      14      15      15      16
+
+      15 !NTHETA: angles
+       1       2       3       2       3       4       2       3      11
+       4       3      11       3       4       5       4       5       6
+       5       6       7       6       7       8       7       8       9
+       8       9      10       3      11      12      11      12      13
+      12      13      14      13      14      15      14      15      16
+
+       0 !NPHI: dihedrals
+
+
+       0 !NIMPHI: impropers
+
+
+       0 !NDON: donors
+
+
+       0 !NACC: acceptors
+
+
+       0 !NNB
+
+       0       0       0       0       0       0       0       0
+       0       0       0       0       0       0       0       0
+
+
+       1       0 !NGRP
+       0       0       0
+
