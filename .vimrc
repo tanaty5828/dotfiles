@@ -1,3 +1,4 @@
+set encoding=utf-8
 " setting
 if has('vim_starting')
   set nocompatible
@@ -5,6 +6,7 @@ endif
 
 filetype off
 filetype indent plugin off
+
 
 if !filereadable(expand('~/.vim/autoload/plug.vim'))
   if !executable("curl")
@@ -39,6 +41,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 "" auto bracket
 Plug 'Raimondi/delimitMate'
+"" sorround by S-key
 Plug 'tpope/vim-surround'
 "" error detect
 Plug 'scrooloose/syntastic'
@@ -46,9 +49,25 @@ Plug 'scrooloose/syntastic'
 Plug 'bronson/vim-trailing-whitespace'
 "" auto complete
 " Plug 'sheerun/vim-polyglot' " I don't want to use this plugin.
-"
-Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
 Plug 'ervandew/supertab'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'ryanolsonx/vim-lsp-python'
+" deoplete
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/vim-hug-neovim-rpc'
+  Plug 'roxma/nvim-yarp'
+endif
+
+Plug 'lighttiger2505/deoplete-vim-lsp'
+Plug 'deoplete-plugins/deoplete-jedi'
+
 "" html
 Plug 'hail2u/vim-css3-syntax'
 Plug 'gorodinskiy/vim-coloresque'
@@ -74,28 +93,94 @@ let mapleader="/<Space>"
 "
 
 let mapleader="\<Space>"
-
-"" youcompleteme
-let g:ycm_server_python_interpreter = '/usr/bin/python3.6'
-let g:ycm_python_binary_path = '/usr/bin/python3.6'
-let g:ycm_auto_trigger = 1
-let g:ycm_min_num_of_chars_for_completion = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_key_list_select_completion = ['<Down>']
-let g:ycm_key_list_previous_completion = ['<Up>']
-let g:ycm_seed_identifiers_with_syntax = 1
-" let g:ycm_disable_signature_help = 1
+"" vim-lsp
+let g:lsp_diagnostics_enabled = 1
+"" fix tab order
 let g:SuperTabDefaultCompletionType = '<C-n>'
-let g:make = 'gmake'
-if exists('make')
-  let g:make = 'make'
+""  python
+if executable('pyls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'whitelist': ['python'],
+        \ 'workspace_config' : {
+        \    'pyls': {
+        \        'plugins': {
+        \            'jedi_definition': {
+        \                'follow_imports': v:true,
+        \                'follow_builtin_imports': v:true
+        \    },
+        \ }}}
+        \})
 endif
 
+" deoplete
+let g:deoplete#enable_at_startup = 1
+" <TAB>: completion.
+
+"  deo-jedi
+"  add path to 'anaconda python'
+let g:deoplete#sources#jedi#python_path = '/home/tanaka/anaconda3/bin/python3.7'
+" This python is used for only complete
+" The vim is compiled by '/usr/local/python3.6'
+" So use '/usr/local/python3.6 -m pip install ......'
+
+" For python language server
+" if (executable('pyls'))
+"     let s:pyls_path = fnamemodify(g:python_host_prog, ':h') . '/'. 'pyls'
+"     augroup LspPython
+"         autocmd!
+"         autocmd User lsp_setup call lsp#register_server({
+"       \ 'name': 'pyls',
+"       \ 'cmd': {server_info->['pyls']},
+"       \ 'whitelist': ['python']
+"       \ })
+"     augroup END
+" endif
+
+
+"" icons
+let g:lsp_signs_error = {'text': '✗'}
+let g:lsp_signs_warning = {'text': '⚠'}
+let g:lsp_signs_hint = {'icon': '/path/to/some/other/icon'} " icons require GUI
+
+" linter
+" let g:lsp_signs_enabled = 1
+" let g:lsp_diagnostics_echo_cursor = 1
+" let g:lsp_signs_error = {'text': '✗'}
+" let g:lsp_signs_warning = {'text': '‼', 'icon': '/path/to/some/icon'}
+" let g:lsp_signs_hint = {'icon': '/path/to/some/other/icon'}
+
+"" youcompleteme
+" let g:ycm_server_python_interpreter = '/usr/bin/python3.6'
+" let g:ycm_python_binary_path = '/usr/bin/python3.6'
+" let g:ycm_auto_trigger = 1
+" let g:ycm_min_num_of_chars_for_completion = 1
+" let g:ycm_complete_in_comments = 1
+" let g:ycm_autoclose_preview_window_after_insertion = 1
+" let g:ycm_max_num_candidates = 0
+let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
+" let g:ycm_key_list_previous_completion = ['<Up>']
+" let g:ycm_seed_identifiers_with_syntax = 1
+" let g:ycm_disable_signature_help = 1 " if this param on, disale signature[ID] why?
+" " but vim cannot complete signature
+" set completeopt-=preview
+" set completeopt-=menu
+" set completeopt-=menuone
+" set completeopt-=longest
+" let g:ycm_add_preview_to_completeopt = 0
+" let g:make = 'gmake'
+" if exists('make')
+"   let g:make = 'make'
+" endif
+
 "" color
+" colorscheme evening " カラースキームにicebergを設定する
 colorscheme iceberg " カラースキームにicebergを設定する
 
 " vim-airline
-let g:airline_theme = 'iceberg'
+let g:airline_theme = 'iceberg'  "iceberg's color is going bad.(200603)
+" let g:airline_theme = 'bubblegum'
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -137,6 +222,11 @@ let g:syntastic_style_error_symbol = '✗'
 let g:syntastic_style_warning_symbol = '⚠'
 let g:syntastic_auto_loc_list=1
 let g:syntastic_aggregate_errors = 1
+"" Do syntaxtic_check if filetype was setted to hoge
+let g:syntastic_mode_map = {
+    \ 'mode': 'passive',
+    \ 'active_filetypes': ['hoge']
+    \}
 
 "" jedi-vim
 " let g:jedi#auto_initialization = 0
@@ -289,7 +379,6 @@ imap <C-f> <C-o>W
 imap <C-b> <C-o>B
 
 " base
-set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
 set ambiwidth=double " □や○文字が崩れる問題を解決
@@ -312,6 +401,7 @@ set hlsearch
 nnoremap <silent><Esc><Esc> :<C-u>set nohlsearch!<CR>
 set whichwrap=b,s,h,l,<,>,[,],~ " カーソルの左右移動で行末から次の行の行頭への移動が可能になる
 set cursorline " カーソルラインをハイライト
+set termguicolors  " more blue color
 
 " 行が折り返し表示されていた場合、行単位ではなく表示行単位でカーソルを移動する
 nnoremap j gj
@@ -390,6 +480,7 @@ if !argc()
     autocmd vimenter * NERDTree|normal gg3j
 endif
 
+" autocmd FileType python setlocal omnifunc=jedi#completions
 " this statement is needed
 let g:csv_delim=','
 filetype plugin indent on
@@ -399,3 +490,6 @@ filetype plugin indent on
 "
 " autocmd BufReadPost * tab ball " open by tab
 " nnoremap tt gt
+let &colorcolumn=join(range(81,999),",")
+hi ColorColumn ctermbg=235 guibg=#2c2d27
+
