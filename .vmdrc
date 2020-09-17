@@ -5,7 +5,6 @@
 ##                      ver-3.1  18/09/28       ##
 ##                                              ##
 ##################################################
-set auto_path [linsert $auto_path 0 [file join $env(HOME) .vmdplugins]]
 
 # add personalized keyboard shortcuts
 # you need to put command into parentheses
@@ -21,13 +20,8 @@ user add key {mol list}
 # user add key s {rotate stop}
 
 # for TANATY
-source ~/App/vmd-1.9.3/scripts/vmd/center.tcl
-source ~/App/vmd-1.9.3/scripts/vmd/get_total_charge.tcl
-center "name P"
 user add key p {pbc wrap -center origin -compound residue -all}
 user add key P {pbc box -center origin}
-
-
 
 after idle {
   if { [info exists tk_version] } {
@@ -120,7 +114,7 @@ after idle {
     # state : active
     if { 1 } {
       display reposition 1100 1000
-      display resize 800 920
+      display resize 1280 1280
       #display projection Perspective
       display projection Orthographic
       display depthcue off
@@ -617,37 +611,8 @@ after idle {
     if { 1 } {
       mol default color Name
       mol default material {AOShiny}
-      #mol default material Opaque
       mol default style {Licorice}
       mol default selection {all}
-
-        # water
-        mol modselect 0 0 water
-        mol modstyle 0 0 quicksurf
-        mol modmaterial 0 0 Transparent
-        mol modcolor 0 0 Element
-        mol showrep 0 0 off
-
-        # DNA
-        mol addrep 0
-        mol modselect 1 0 nucleic
-        mol modstyle 1 0 Licorice
-        mol modmaterial 1 0 AOShiny
-        # mol showrep 0 1 off
-
-        # ion
-        mol addrep 0
-        mol modselect 2 0 ion
-        mol modstyle 2 0 Licorice
-        mol modmaterial 2 0 AOShiny
-        # mol showrep 0 2 off
-
-        # other
-        mol addrep 0
-        mol modselect 3 0 not water
-        mol modstyle 3 0 Licorice
-        mol modmaterial 3 0 AOShiny
-        # mol showrep 0 3 off
 
         # display
         display resetview
@@ -706,7 +671,6 @@ after idle {
 
     # <custom entry>
     # Description: new
-lappend auto_path /home/onotakanori/vmd-1.9.3/vmd_density_profile-master
 
     # </custom entry>
 
@@ -716,5 +680,3 @@ lappend auto_path /home/onotakanori/vmd-1.9.3/vmd_density_profile-master
 }
 
 # End Theme File
-
-set  auto_path [linsert $auto_path 0 [file join $env(HOME) .vmdplugins]]
